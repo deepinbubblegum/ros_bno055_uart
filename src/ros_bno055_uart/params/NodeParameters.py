@@ -33,8 +33,11 @@ class NodeParameters:
         rospy.loginfo('Parameters set')
 
     def Convert(self, string):
-        floats = []
-        li = list(string.split(","))
-        for element in li:
-            floats.append(float(element))
-        return floats
+        try:
+            floats = []
+            li = list(string.split(","))
+            for element in li:
+                floats.append(float(element))
+            return floats
+        except:
+            return string
