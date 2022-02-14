@@ -46,5 +46,10 @@
         <param name="variance_angular_vel" value="$(arg variance_angular_vel)"/>
         <param name="variance_orientation" value="$(arg variance_orientation)"/>
         <param name="variance_mag" value="$(arg variance_mag)"/> -->
+
+        <remap from="bno055/imu" to="imu/data"/>
+        <remap from="bno055/imu_raw" to="imu/data_raw"/>
+        <remap from="bno055/mag" to="imu/mag"/>
+        <remap from="bno055/temp" to="imu/temp"/>
     </node>
 </launch>
