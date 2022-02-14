@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<launch>
+    <arg name="ros_topic_prefix" default="bno055/"/>
+    <arg name="uart_port" default="/dev/ttyUSB0"/>
+    <arg name="uart_baudrate" default="115200"/>
+    <arg name="uart_timeout" default="0.1"/>
+    <arg name="data_query_frequency" default="50.0"/>
+    <arg name="calib_status_frequency" default="0.1"/>
+    <arg name="frame_id" default="imu_link"/>
+    <arg name="operation_mode" default="0x0C"/>
+    <arg name="placement_axis_remap" default="P2"/>
+    <arg name="acc_factor" default="100.0"/>
+    <arg name="mag_factor" default="16000000.0"/>
+    <arg name="gyr_factor" default="900.0"/>
+    <arg name="set_offsets" default="false"/>
+    <arg name="offset_acc" default="0xFFEC, 0x00A5, 0xFFE8"/>
+    <arg name="offset_mag" default="0xFFB4, 0xFE9E, 0x027D"/>
+    <arg name="offset_gyr" default="0x0002, 0xFFFF, 0xFFFF"/>
+
+    <!-- Sensor standard deviation [x,y,z]
+    Used to calculate covariance matrices
+    defaults are used if parameters below are not provided -->
+    <!-- <arg name="variance_acc" default="0.0, 0.0, 0.0"/>
+    <arg name="variance_angular_vel" default="0.04, 0.04, 0.04"/>
+    <arg name="variance_orientation" default="0.0159, 0.0159, 0.0159"/>
+    <arg name="variance_mag" default="0.0, 0.0, 0.0"/> -->
+
+    <node pkg="ros_bno055_uart" type="bno055.py" name="imu_bno055_node" output="screen">
+        <param name="ros_topic_prefix" value="$(arg ros_topic_prefix)"/>
+        <param name="uart_port" value="$(arg uart_port)"/>
+        <param name="uart_baudrate" value="$(arg uart_baudrate)"/>
+        <param name="uart_timeout" value="$(arg uart_timeout)"/>
+        <param name="data_query_frequency" value="$(arg data_query_frequency)"/>
+        <param name="calib_status_frequency" value="$(arg calib_status_frequency)"/>
+        <param name="frame_id" value="$(arg frame_id)"/>
+        <param name="operation_mode" value="$(arg operation_mode)"/>
+        <param name="placement_axis_remap" value="$(arg placement_axis_remap)"/>
+        <param name="acc_factor" value="$(arg acc_factor)"/>
+        <param name="mag_factor" value="$(arg mag_factor)"/>
+        <param name="gyr_factor" value="$(arg gyr_factor)"/>
+        <param name="set_offsets" value="$(arg set_offsets)"/>
+        <param name="offset_acc" value="$(arg offset_acc)"/>
+        <param name="offset_mag" value="$(arg offset_mag)"/>
+        <param name="offset_gyr" value="$(arg offset_gyr)"/>
+        <!-- <param name="variance_acc" value="$(arg variance_acc)"/>
+        <param name="variance_angular_vel" value="$(arg variance_angular_vel)"/>
+        <param name="variance_orientation" value="$(arg variance_orientation)"/>
+        <param name="variance_mag" value="$(arg variance_mag)"/> -->
+    </node>
+</launch>
