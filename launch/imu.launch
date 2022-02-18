@@ -25,7 +25,7 @@
     <arg name="variance_orientation" default="0.0159, 0.0159, 0.0159"/>
     <arg name="variance_mag" default="0.0, 0.0, 0.0"/> -->
 
-    <node pkg="ros_bno055_uart" type="bno055.py" name="imu_bno055_node" output="screen">
+    <node pkg="ros_bno055_uart" type="bno055.py" name="imu_bno055_node" respawn="true" output="screen">
         <param name="ros_topic_prefix" value="$(arg ros_topic_prefix)"/>
         <param name="uart_port" value="$(arg uart_port)"/>
         <param name="uart_baudrate" value="$(arg uart_baudrate)"/>
