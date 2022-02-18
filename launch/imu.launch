@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <launch>
     <arg name="ros_topic_prefix" default="bno055/"/>
-    <arg name="uart_port" default="/dev/ttyUSB0"/>
+    <arg name="uart_port" default="/dev/ttyUSB1"/>
     <arg name="uart_baudrate" default="115200"/>
     <arg name="uart_timeout" default="0.1"/>
     <arg name="data_query_frequency" default="50.0"/>
